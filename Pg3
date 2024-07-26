@@ -1,0 +1,36 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'OrderID': range(1, 21),
+    'ProductCategory': ['Electronics', 'Clothing', 'Home', 'Books', 'Toys'] * 4,
+    'Sales': [200, 150, 300, 100, 250, 220, 130, 340, 110, 270, 210, 140, 310, 120, 260, 230, 160, 320, 130, 280]
+}
+
+df = pd.DataFrame(data)
+
+category_sales = df.groupby('ProductCategory')['Sales'].sum().reset_index()
+
+plt.figure(figsize=(10, 6))
+plt.plot(category_sales['ProductCategory'], category_sales['Sales'], marker='o')
+plt.title('Sales Distribution Across Product Categories (Line Plot)')
+plt.xlabel('Product Category')
+plt.ylabel('Total Sales')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.scatter(category_sales['ProductCategory'], category_sales['Sales'])
+plt.title('Sales Distribution Across Product Categories (Scatter Plot)')
+plt.xlabel('Product Category')
+plt.ylabel('Total Sales')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.bar(category_sales['ProductCategory'], category_sales['Sales'])
+plt.title('Sales Distribution Across Product Categories (Bar Plot)')
+plt.xlabel('Product Category')
+plt.ylabel('Total Sales')
+plt.grid(True)
+plt.show()
