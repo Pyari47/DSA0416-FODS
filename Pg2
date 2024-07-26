@@ -1,0 +1,27 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data (replace with your actual data)
+data = {
+    'Smoking': [10, 15, 20, 5, 8, 12, 18, 7, 3, 11],  # Example smoking habits (e.g., number of cigarettes per day)
+    'LungCancerRate': [2, 3, 4, 1, 2, 3, 4, 1, 2, 3]  # Example lung cancer rates (e.g., per 100,000 people)
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Calculate correlation coefficient
+correlation = df['Smoking'].corr(df['LungCancerRate'])
+
+# Print correlation coefficient
+print(f"Correlation Coefficient between Smoking and Lung Cancer Rate: {correlation:.2f}")
+
+# Create scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Smoking'], df['LungCancerRate'], color='blue', alpha=0.7)
+plt.title('Relationship between Smoking and Lung Cancer Rate')
+plt.xlabel('Smoking (Number of Cigarettes per Day)')
+plt.ylabel('Lung Cancer Rate (per 100,000)')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
