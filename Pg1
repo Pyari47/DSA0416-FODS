@@ -1,0 +1,29 @@
+import pandas as pd
+
+# Load the dataset into a Pandas DataFrame
+df = pd.read_csv("C:/Users/Pyari/Downloads/sample_ecommerce_data.csv")
+
+# Display the first few rows of the DataFrame to understand its structure
+print(df.head())
+
+# Perform analysis and derive insights
+# Example: Calculate total revenue
+total_revenue = df['TotalPrice'].sum()
+print(f"Total Revenue: ${total_revenue:.2f}")
+
+# Example: Find the top 5 customers by total spending
+customer_spending = df.groupby('CustomerID')['TotalPrice'].sum().sort_values(ascending=False)
+top_customers = customer_spending.head(5)
+print("\nTop 5 Customers by Total Spending:")
+print(top_customers)
+
+# Example: Calculate average quantity of products per order
+average_quantity = df['Quantity'].mean()
+print(f"\nAverage Quantity of Products per Order: {average_quantity:.2f}")
+
+# Example: Analyze popular products (most ordered)
+popular_products = df.groupby('ProductID')['Quantity'].sum().sort_values(ascending=False)
+print("\nPopular Products (Most Ordered):")
+print(popular_products.head())
+
+# Further analysis and insights can be derived based on specific business questions and goals.
