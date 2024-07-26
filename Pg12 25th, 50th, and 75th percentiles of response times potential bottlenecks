@@ -1,0 +1,9 @@
+import pandas as pd
+
+# Example DataFrame with response times
+df = pd.DataFrame({
+    'Response Time': [200, 180, 220, 210, 250, 270, 230, 260]
+})
+# Calculate percentiles
+percentiles = df['Response Time'].quantile([0.25, 0.50, 0.75])
+print(percentiles)
