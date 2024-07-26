@@ -1,0 +1,20 @@
+import pandas as pd
+
+# Example DataFrame
+df = pd.DataFrame({
+    'Department': ['HR', 'Finance', 'HR', 'Finance'],
+    'Salary': [50000, 60000, 55000, 65000]
+})
+
+# Highest and lowest salaries in each department
+print(df.groupby('Department')['Salary'].agg(['max', 'min']))
+# Add sample data
+df['Joining Date'] = pd.to_datetime(['2020-01-15', '2019-03-22', '2021-06-30', '2018-11-12'])
+reference_date = pd.Timestamp('2024-07-24')
+
+# Calculate average tenure
+df['Tenure'] = (reference_date - df['Joining Date']).dt.days
+print(f"Average Tenure: {df['Tenure'].mean():.2f} days")
+# Filter employees who joined before a specific date
+specific_date = pd.Timestamp('2021-01-01')
+print(df[df['Joining Date'] < specific_date])
