@@ -1,0 +1,27 @@
+import pandas as pd
+
+# Sample data - replace with your actual dataset
+# The dataset should have columns: 'City', 'Date', 'Temperature'
+data = {
+    'City': ['CityA'] * 365 + ['CityB'] * 365,
+    'Date': pd.date_range(start='2024-01-01', periods=365).tolist() + pd.date_range(start='2024-01-01', periods=365).tolist(),
+    'Temperature': [15 + i % 10 for i in range(365)] + [20 + i % 5 for i in range(365)]
+}
+df = pd.DataFrame(data)
+
+# Calculate the mean temperature for each city
+mean_temp = df.groupby('City')['Temperature'].mean()
+print(f"Mean Temperature for each city:\n{mean_temp}\n")
+
+# Calculate the standard deviation of temperature for each city
+std_temp = df.groupby('City')['Temperature'].std()
+print(f"Standard Deviation of Temperature for each city:\n{std_temp}\n")
+
+# Determine the city with the highest temperature range
+temperature_range = df.groupby('City')['Temperature'].agg(lambda x: x.max() - x.min())
+city_with_highest_range = temperature_range.idxmax()
+print(f"City with the highest temperature range: {city_with_highest_range}\n")
+
+# Find the city with the most consistent temperature (the lowest standard deviation)
+most_consistent_city = std_temp.idxmin()
+print(f"City with the most consistent temperature: {most_consistent_city}")
