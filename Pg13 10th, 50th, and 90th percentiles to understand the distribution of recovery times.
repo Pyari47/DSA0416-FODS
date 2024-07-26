@@ -1,0 +1,9 @@
+import pandas as pd
+
+# Example DataFrame with recovery times
+df = pd.DataFrame({
+    'Recovery Time': [7, 14, 5, 12, 20, 8, 11, 15, 9, 13]
+})
+# Calculate percentiles
+percentiles = df['Recovery Time'].quantile([0.10, 0.50, 0.90])
+print(percentiles)
