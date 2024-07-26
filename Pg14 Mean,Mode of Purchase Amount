@@ -1,0 +1,12 @@
+import pandas as pd
+
+# Example DataFrame with purchase amounts
+df = pd.DataFrame({
+    'Purchase Amount': [20, 30, 20, 50, 30, 30, 40, 50, 20]
+})
+# Calculate the mean (average) purchase amount
+mean_purchase_amount = df['Purchase Amount'].mean()
+print(f"Mean Purchase Amount: ${mean_purchase_amount:.2f}")
+# Calculate the mode of the purchase amounts
+mode_purchase_amount = df['Purchase Amount'].mode()
+print(f"Mode Purchase Amount(s): ${', '.join(map(str, mode_purchase_amount))}")
