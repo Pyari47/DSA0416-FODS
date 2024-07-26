@@ -1,0 +1,26 @@
+import numpy as np
+import pandas as pd
+
+# Sample data - replace with your dataset
+data = {
+    'Date': pd.date_range(start='2024-01-01', periods=30, freq='D'),
+    'Temperature': [15, 16, 14, 15, 15, 16, 14, 16, 15, 17,
+                    18, 20, 19, 15, 14, 16, 15, 16, 18, 17,
+                    19, 15, 14, 13, 16, 15, 14, 14, 15, 14]
+}
+df = pd.DataFrame(data)
+
+# Calculate variance
+variance = np.var(df['Temperature'])
+print(f"Variance of temperatures: {variance}")
+
+# Identifying outliers using IQR
+Q1 = df['Temperature'].quantile(0.25)
+Q3 = df['Temperature'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = df[(df['Temperature'] < lower_bound) | (df['Temperature'] > upper_bound)]
+
+print(f"Outliers:\n{outliers}")
