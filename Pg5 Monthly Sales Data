@@ -1,0 +1,19 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data (replace with your actual data)
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+sales = [10000, 12000, 11000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000, 21000]  # Example sales values
+
+# Create a DataFrame
+df = pd.DataFrame({'Month': months, 'Sales': sales})
+
+# Line plot for monthly sales data
+plt.figure(figsize=(10, 6))
+plt.plot(df['Month'], df['Sales'], marker='o', color='b', linestyle='-', linewidth=2)
+plt.title('Monthly Sales Data')
+plt.xlabel('Month')
+plt.ylabel('Sales ($)')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
