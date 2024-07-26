@@ -1,0 +1,13 @@
+import numpy as np
+
+# Sample data - replace with your actual dataset
+# The dataset should have a column 'Sales' representing daily sales figures
+daily_sales = [100, 150, 200, 120, 180, 250, 160, 130, 190, 140, 220, 170, 210, 160, 180, 
+               140, 160, 230, 120, 140, 170, 180, 190, 210, 200, 170, 150, 160, 180, 190]
+
+# Convert the data to a numpy array
+sales_array = np.array(daily_sales)
+
+# Calculate the variance of daily sales
+variance_sales = np.var(sales_array)
+print(f"Variance of daily sales: {variance_sales}")
