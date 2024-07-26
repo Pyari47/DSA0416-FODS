@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data (replace with your actual data)
+months = range(1, 13)
+temperature = [25, 26, 28, 30, 32, 30, 29, 28, 28, 27, 26, 25]  # Example temperatures in Celsius
+rainfall = [50, 40, 60, 80, 100, 120, 100, 90, 80, 70, 60, 50]  # Example rainfall in mm
+
+# Create a DataFrame
+df = pd.DataFrame({'Month': months, 'Temperature': temperature, 'Rainfall': rainfall})
+
+# Line plot for temperature
+plt.figure(figsize=(10, 6))
+plt.plot(df['Month'], df['Temperature'], marker='o', color='b', linestyle='-', linewidth=2, label='Temperature')
+plt.title('Monthly Temperature Variation')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°C)')
+plt.xticks(months)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# Line plot for rainfall
+plt.figure(figsize=(10, 6))
+plt.plot(df['Month'], df['Rainfall'], marker='s', color='g', linestyle='-', linewidth=2, label='Rainfall')
+plt.title('Monthly Rainfall Variation')
+plt.xlabel('Month')
+plt.ylabel('Rainfall (mm)')
+plt.xticks(months)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
